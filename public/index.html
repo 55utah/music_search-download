@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+    <html ng-app='myapp'>
+    <head>
+        <title>music_search&download--maci</title>
+        <base href="/">
+        <meta charset="utf-8">
+        <style type="text/css">
+        .myinput{
+            width: 440px;
+            height: 25px;
+            font-size:25px;
+          
+        }
+        .myform{
+             width: 500px;
+             margin: 5px auto;
+        }
+        .mybutton{
+            width: 50px;
+            margin: 0;
+            height: 25px;
+        }
+        .block{
+            width: 500px;
+            height:50px;
+            margin: 5px auto 0 auto;
+            box-shadow: 0 0 8px -3px #000000;
+            -webkit-box-shadow: 0 0 8px -3px #000000;
+            transition:all 0.3s;
+            background-color:#F0FFFF; 
+            cursor: pointer;
+        }
+        .block:hover{
+            transform:scale(1.05,1.02);
+            -ms-transform:scale(1.05,1.02);     /* IE 9 */
+            -moz-transform:scale(1.05,1.02);    /* Firefox */
+            -webkit-transform:scale(1.05,1.0); /* Safari 和 Chrome */
+            -o-transform:scale(1.05,1.02)  /* Opera */
+        }
+        .img1{
+            margin: 5px auto 5px 5px;
+            display: inline-block;
+            float: left;
+        }
+        .text{
+            display: inline-block;
+            font-size: 10px;
+            line-height: 40px;
+            margin-left:5px;
+
+        }
+        .block2{
+            width: 500px;
+            height:70px;
+            margin: 5px auto 0 auto;
+            box-shadow: 0 0 8px -3px #000000;
+            -webkit-box-shadow: 0 0 8px -3px #000000;
+            transition:all 0.3s;
+            background-color:#F0FFFF; 
+            cursor: pointer;
+        }
+        .block2:hover{
+            transform:scale(1.01,1.005);
+            -ms-transform:scale(1.01,1.005);     /* IE 9 */
+            -moz-transform:scale(1.05,1.02);    /* Firefox */
+            -webkit-transform:scale(1.01,1.005); /* Safari 和 Chrome */
+            -o-transform:scale(1.05,1.02)  /* Opera */
+        }
+        .myalbum{
+            width: 500px;
+            height:40px;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 5px auto 0 auto;
+        }
+        .mysong{
+             width: 500px;
+             margin: 5px auto 0 auto;
+             font-size: 10px;
+             line-height: 12px;
+        }
+        .text{
+            width: 450px;
+            height:70px;
+
+        }
+        .name{
+            height: 20px;
+            line-height: 20px;
+        }
+        .artist{
+            height: 20px;
+            line-height: 20px;
+        }
+        </style>
+    </head>
+    <body  ng-controller='con1'>
+    <div>
+    <div>
+        <form onsubmit="return false" class="myform">
+        <input class="myinput" type="text" ng-model='str'>
+        <input class="mybutton" type="submit" ng-click='get()' ng-enter='get()'>
+         </form>
+         <div>
+       <!--  <audio src="http://zhangmenshiting.baidu.com/data2/music/100616572/100616572.mp3?xcode=4836212aa0a7a9b47e919dd56dd3c83c"  controls='controls'></audio> -->
+         </div>
+    </div>
+     <p class="myalbum">专辑：</p>
+      <div ng-repeat='list in lists' class="block">
+        <div class="img1">
+          <img ng-src='{{list.artistpic}}'>
+        </div>
+        <div class="text">
+          <p class="name">{{list.albumname}}--作家：{{list.artistname}}</p>
+        </div>
+      </div>
+      <div class="mysong">
+      <p>歌曲(可下载)：</p>
+      <div>复制如下地址在新页面打开即下载音乐：</div>
+      <div>{{music_info}}{{download_url}}</div>
+      </div>
+      <div ng-repeat='song in songs' class="block2" ng-click='play($index)'>
+          <div class="text">
+          <p class="name">{{song.songname}}--id:{{song.songid}}</p>
+          <p class="artist">作家：{{song.artistname}}---{{song.info}}</p>
+        </div>
+      </div>
+    </div>
+    </body>
+    <script src='angular.min.js'></script>
+    <script src="con1.js"></script>
+    </html>
